@@ -5,29 +5,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.Instant;
 
-@Data
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Vehicle {
-
+public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private User owner;
+    private User sender;
 
-    @OneToOne
-    private VehicleType vehicleType;
+    @ManyToOne
+    private User receiver;
 
-    private Long price;
+    private String content;
 
-    private String description;
-
-    private String imgUrl;
-
-    private String license;
-
+    private Instant createdTime;
 }

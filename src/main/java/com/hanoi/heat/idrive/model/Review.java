@@ -10,24 +10,18 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Vehicle {
-
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private User owner;
+    private String content;
 
     @OneToOne
-    private VehicleType vehicleType;
+    private User reviewer;
 
-    private Long price;
+    @OneToOne
+    private Vehicle vehicle;
 
-    private String description;
-
-    private String imgUrl;
-
-    private String license;
-
+    private int rating;
 }
