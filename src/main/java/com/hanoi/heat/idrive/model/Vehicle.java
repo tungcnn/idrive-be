@@ -25,6 +25,8 @@ public class Vehicle {
     @ManyToOne
     private Location location;
 
+    private String brand;
+
     private Long price;
 
     private String description;
