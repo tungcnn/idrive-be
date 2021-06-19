@@ -37,6 +37,15 @@ public class VehicleController {
         return new ResponseEntity<>(vehicles, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Vehicle> getVehicleById(@PathVariable("id") Long id) {
+        Optional<Vehicle> vehicleOptional = vehicleService.findById(id);
+        if (!vehicleOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(vehicleOptional.get(), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<Vehicle> addNewVehicle(@RequestBody Vehicle vehicle) {
         return new ResponseEntity<>(vehicleService.save(vehicle), HttpStatus.CREATED);
