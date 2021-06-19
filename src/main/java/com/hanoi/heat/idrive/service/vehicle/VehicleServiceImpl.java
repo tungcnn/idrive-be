@@ -1,6 +1,8 @@
 package com.hanoi.heat.idrive.service.vehicle;
 
+import com.hanoi.heat.idrive.model.Location;
 import com.hanoi.heat.idrive.model.Vehicle;
+import com.hanoi.heat.idrive.model.VehicleType;
 import com.hanoi.heat.idrive.repository.VehicleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -37,5 +39,21 @@ public class VehicleServiceImpl implements VehicleService{
     @Override
     public void delete(Long id) {
         vehicleRepo.deleteById(id);
+    }
+
+
+    @Override
+    public Iterable<Vehicle> findVehicleByLocation(Location location) {
+        return vehicleRepo.findVehicleByLocation(location);
+    }
+
+    @Override
+    public Iterable<Vehicle> findVehicleByVehicleType(VehicleType vehicleType) {
+        return vehicleRepo.findVehicleByVehicleType(vehicleType);
+    }
+
+    @Override
+    public Iterable<Vehicle> findVehicleByLocationAndVehicleType(Location location, VehicleType vehicleType) {
+        return vehicleRepo.findVehicleByLocationAndVehicleType(location, vehicleType);
     }
 }

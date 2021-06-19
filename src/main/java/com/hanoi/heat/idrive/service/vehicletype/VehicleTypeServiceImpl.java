@@ -26,16 +26,16 @@ public class VehicleTypeServiceImpl implements VehicleTypeService{
 
     @Override
     public VehicleType save(VehicleType vehicleType) {
-        return null;
+        return vehicleTypeRepo.save(vehicleType);
     }
 
     @Override
     public Optional<VehicleType> findById(Long id) {
-        return Optional.empty();
+        return vehicleTypeRepo.findById(id);
     }
 
     @Override
     public void delete(Long id) {
-
+        vehicleTypeRepo.deleteById(id);
     }
 }
