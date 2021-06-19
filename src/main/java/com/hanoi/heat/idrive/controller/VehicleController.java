@@ -51,12 +51,8 @@ public class VehicleController {
         return new ResponseEntity<>(vehicleService.save(vehicle), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> editVehicle(@RequestBody Vehicle vehicle, @PathVariable("id") Long id) {
-        Optional<Vehicle> vehicleOptional = vehicleService.findById(id);
-        if (!vehicleOptional.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    @PutMapping
+    public ResponseEntity<?> editVehicle(@RequestBody Vehicle vehicle) {
         vehicleService.save(vehicle);
         return new ResponseEntity<>(HttpStatus.OK);
     }
