@@ -26,16 +26,16 @@ public class LocationServiceImpl implements LocationService{
 
     @Override
     public Location save(Location location) {
-        return null;
+        return locationRepo.save(location);
     }
 
     @Override
     public Optional<Location> findById(Long id) {
-        return Optional.empty();
+        return locationRepo.findById(id);
     }
 
     @Override
     public void delete(Long id) {
-
+        locationRepo.deleteById(id);
     }
 }
