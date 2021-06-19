@@ -46,6 +46,33 @@ public class VehicleController {
         return new ResponseEntity<>(vehicleOptional.get(), HttpStatus.OK);
     }
 
+    @GetMapping("/{locationName}")
+    public ResponseEntity<Iterable<Vehicle>> getVehicleByLocationName(@PathVariable("locationName") String locationName) {
+        List<Vehicle> vehicles = (List<Vehicle>) vehicleService.findVehiclesByLocationName(locationName);
+        if (vehicles.isEmpty()) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(vehicles, HttpStatus.OK);
+    }
+
+    @GetMapping("/{vehicleType}")
+    public ResponseEntity<Iterable<Vehicle>> getVehicleByVehicleType(@PathVariable("vehicleType") String vehicleType) {
+        List<Vehicle> vehicles = (List<Vehicle>) vehicleService.findVehiclesByLocationName(vehicleType);
+        if (vehicles.isEmpty()) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(vehicles, HttpStatus.OK);
+    }
+
+    @GetMapping("/{locationName}/{vehicleType}")
+    public ResponseEntity<Iterable<Vehicle>> getVehicleByVehicleType(@PathVariable("locationName") String locationName , @PathVariable("vehicleType") String vehicleType) {
+        List<Vehicle> vehicles = (List<Vehicle>) vehicleService.findVehicleByLocationNameAndVehicleTypeName(locationName, vehicleType);
+        if (vehicles.isEmpty()) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(vehicles, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<Vehicle> addNewVehicle(@RequestBody Vehicle vehicle) {
         return new ResponseEntity<>(vehicleService.save(vehicle), HttpStatus.CREATED);

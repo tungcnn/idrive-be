@@ -38,4 +38,20 @@ public class VehicleServiceImpl implements VehicleService{
     public void delete(Long id) {
         vehicleRepo.deleteById(id);
     }
+
+
+    @Override
+    public Iterable<Vehicle> findVehiclesByLocationName(String locationName) {
+        return vehicleRepo.findVehiclesByLocationName(locationName);
+    }
+
+    @Override
+    public Iterable<Vehicle> findVehicleByVehicleTypeName(String vehicleTypeName) {
+        return vehicleRepo.findVehicleByVehicleTypeName(vehicleTypeName);
+    }
+
+    @Override
+    public Iterable<Vehicle> findVehicleByLocationNameAndVehicleTypeName(String locationName, String vehicleTypeName) {
+        return vehicleRepo.findVehicleByLocationNameAndVehicleTypeName(locationName, vehicleTypeName);
+    }
 }
