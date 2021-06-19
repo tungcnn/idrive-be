@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -31,7 +33,8 @@ public class Vehicle {
 
     private String description;
 
-    private String imgUrl;
+    @ElementCollection
+    private ArrayList<String> imgUrls;
 
     private String license;
 
