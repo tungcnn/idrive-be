@@ -1,6 +1,8 @@
 package com.hanoi.heat.idrive.controller;
 
+import com.hanoi.heat.idrive.model.Location;
 import com.hanoi.heat.idrive.model.Vehicle;
+import com.hanoi.heat.idrive.model.VehicleType;
 import com.hanoi.heat.idrive.service.vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -46,27 +48,27 @@ public class VehicleController {
         return new ResponseEntity<>(vehicleOptional.get(), HttpStatus.OK);
     }
 
-    @GetMapping("/{locationName}")
-    public ResponseEntity<Iterable<Vehicle>> getVehicleByLocationName(@PathVariable("locationName") String locationName) {
-        List<Vehicle> vehicles = (List<Vehicle>) vehicleService.findVehiclesByLocationName(locationName);
+    @GetMapping("/findByLocation/{id}")
+    public ResponseEntity<Iterable<Vehicle>> getVehicleByLocation(@PathVariable Long id) {
+        List<Vehicle> vehicles = (List<Vehicle>) vehicleService.findVehicleByLocation(vehicleService.findById(id).get().getLocation());
         if (vehicles.isEmpty()) {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(vehicles, HttpStatus.OK);
     }
 
-    @GetMapping("/{vehicleType}")
-    public ResponseEntity<Iterable<Vehicle>> getVehicleByVehicleType(@PathVariable("vehicleType") String vehicleType) {
-        List<Vehicle> vehicles = (List<Vehicle>) vehicleService.findVehiclesByLocationName(vehicleType);
+    @GetMapping("/findByVehicleType/{id}")
+    public ResponseEntity<Iterable<Vehicle>> getVehicleByVehicleType(@PathVariable Long id) {
+        List<Vehicle> vehicles = (List<Vehicle>) vehicleService.findVehicleByVehicleType(vehicleService.findById(id).get().getVehicleType());
         if (vehicles.isEmpty()) {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(vehicles, HttpStatus.OK);
     }
 
-    @GetMapping("/{locationName}/{vehicleType}")
-    public ResponseEntity<Iterable<Vehicle>> getVehicleByVehicleType(@PathVariable("locationName") String locationName , @PathVariable("vehicleType") String vehicleType) {
-        List<Vehicle> vehicles = (List<Vehicle>) vehicleService.findVehicleByLocationNameAndVehicleTypeName(locationName, vehicleType);
+    @GetMapping("/findByBoth")
+    public ResponseEntity<Iterable<Vehicle>> getVehicleByLocationAndVehicleType(@RequestBody Location location, @RequestBody VehicleType vehicleType) {
+        List<Vehicle> vehicles = (List<Vehicle>) vehicleService.findVehicleByLocationAndVehicleType(location, vehicleType);
         if (vehicles.isEmpty()) {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
