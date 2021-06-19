@@ -17,10 +17,10 @@ public class Review {
 
     private String content;
 
-    @OneToOne
+    @ManyToOne
     private User reviewer;
 
-    @OneToOne
+    @ManyToOne
     private Vehicle vehicle;
 
     private int rating;

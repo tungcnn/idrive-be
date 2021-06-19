@@ -19,8 +19,11 @@ public class Vehicle {
     @ManyToOne
     private User owner;
 
-    @OneToOne
+    @ManyToOne
     private VehicleType vehicleType;
+
+    @ManyToOne
+    private Location location;
 
     private Long price;
 
