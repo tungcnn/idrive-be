@@ -5,33 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Vehicle {
+public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private User owner;
+    private String imgUrl;
 
     @ManyToOne
-    private VehicleType vehicleType;
-
-    @ManyToOne
-    private Location location;
-
-    private String brand;
-
-    private Long price;
-
-    private String description;
-
-    private String license;
+    private Vehicle vehicle;
 }
