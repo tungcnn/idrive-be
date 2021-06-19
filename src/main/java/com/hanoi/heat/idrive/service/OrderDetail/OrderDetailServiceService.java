@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
 
@@ -41,13 +43,10 @@ public class OrderDetailServiceService implements IOrderDetailService {
         detailRepository.deleteById(id);
     }
 
-    @Override
-    public Iterable<OrderDetail> findByVehicle(Long id) {
-        return detailRepository.findByVehicle(id);
-    }
 
     @Override
-    public Iterable<OrderDetail> findByDate(Date date) {
+    public Iterable<OrderDetail> findByDate(String Date) {
+        String date = "%"+Date+"%";
         return detailRepository.findByDate(date);
     }
 }
