@@ -1,5 +1,6 @@
 package com.hanoi.heat.idrive.controller;
 
+import com.hanoi.heat.idrive.model.User;
 import com.hanoi.heat.idrive.model.Vehicle;
 import com.hanoi.heat.idrive.service.vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,11 @@ public class VehicleController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(vehicleOptional.get(), HttpStatus.OK);
+    }
+
+    @GetMapping("/owner/{id}/{pageNo}")
+    public ResponseEntity<Iterable<Vehicle>> getAllByUser(@PathVariable("id") Long id, @PathVariable("pageNo") int pageNo) {
+        return new ResponseEntity<>(vehicleService.findAllByOwner(id, pageNo), HttpStatus.OK);
     }
 
     @PostMapping
