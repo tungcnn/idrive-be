@@ -40,7 +40,7 @@ public class VehicleController {
 
     @GetMapping("/page/{pageNo}")
     public ResponseEntity<Iterable<Vehicle>> getVehiclePage(@PathVariable("pageNo") int pageNo) {
-        Pageable pageable = PageRequest.of(pageNo, 10);
+        Pageable pageable = PageRequest.of(pageNo, 50);
         Page<Vehicle> vehiclePage = vehicleService.findAll(pageable);
         Iterable<Vehicle> vehicles = vehiclePage.getContent();
         return new ResponseEntity<>(vehicles, HttpStatus.OK);

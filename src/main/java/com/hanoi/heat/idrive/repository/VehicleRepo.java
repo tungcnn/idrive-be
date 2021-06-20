@@ -13,6 +13,6 @@ public interface VehicleRepo extends JpaRepository<Vehicle, Long> {
     Iterable<Vehicle> findVehicleByLocation(Location location);
     Iterable<Vehicle> findVehicleByVehicleType(VehicleType vehicleType);
     Iterable<Vehicle> findVehicleByLocationAndVehicleType(Location location, VehicleType vehicleType);
-    @Query(value = "select * from vehicle where owner_user_id = ?1 limit 10 offset ?2", nativeQuery = true)
+    @Query(value = "select * from vehicle where owner_user_id = ?1 limit 50 offset ?2", nativeQuery = true)
     Iterable<Vehicle> findAllVehicleByOwner(Long id, int offset);
 }
