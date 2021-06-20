@@ -25,7 +25,7 @@ public class OrderDetailController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> History(@PathVariable Long id) {
-        return new ResponseEntity<>(detailService.History(id), HttpStatus.OK);
+        return new ResponseEntity<>(orderDetailService.History(id), HttpStatus.OK);
     }
 
     @PostMapping
