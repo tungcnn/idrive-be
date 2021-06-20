@@ -21,6 +21,9 @@ public class OrderDetail {
     private User renter;
 
     @ManyToOne
+    private User own;
+
+    @ManyToOne
     private Vehicle vehicle;
 
     private Date startTime;
