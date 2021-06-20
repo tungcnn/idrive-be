@@ -1,39 +1,36 @@
 package com.hanoi.heat.idrive.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Vehicle {
-
+public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private User owner;
+    private User renter;
 
     @ManyToOne
-    private VehicleType vehicleType;
+    private User own;
 
     @ManyToOne
-    private Location location;
+    private Vehicle vehicle;
 
-    private String brand;
+    private Date startTime;
 
-    private Long price;
+    private Date endTime;
 
-    private String description;
+    private Long totalPrice;
 
-    private String license;
-
-    private String cover;
+    private boolean status;
 }
