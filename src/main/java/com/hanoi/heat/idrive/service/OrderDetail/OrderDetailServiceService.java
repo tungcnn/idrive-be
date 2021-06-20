@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,5 +49,10 @@ public class OrderDetailServiceService implements IOrderDetailService {
     public Iterable<OrderDetail> findByDate(String Date) {
         String date = "%"+Date+"%";
         return detailRepository.findByDate(date);
+    }
+
+    @Override
+    public List<OrderDetail> History(Long id) {
+        return detailRepository.History(id);
     }
 }
