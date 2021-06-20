@@ -23,6 +23,7 @@ public class OrderDetailController {
         return new ResponseEntity<>(detailService.findByDate(date),HttpStatus.OK);
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<?> History(@PathVariable Long id) {
         return new ResponseEntity<>(detailService.History(id), HttpStatus.OK);
