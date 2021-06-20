@@ -1,5 +1,6 @@
 package com.hanoi.heat.idrive.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

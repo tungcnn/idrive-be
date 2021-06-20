@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.*;
 public class OrderDetailController {
 
     @Autowired
+    private IOrderDetailService detailService;
+
+    @PostMapping("findByDate")
+    public ResponseEntity<?> findByVehicle(@RequestBody String date){
+        return new ResponseEntity<>(detailService.findByDate(date),HttpStatus.OK);
+    }
+
     private IOrderDetailService orderDetailService;
 
     @PostMapping
