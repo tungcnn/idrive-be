@@ -10,5 +10,7 @@ import java.util.List;
 
 public interface OrderDetailRepository extends JpaRepository<OrderDetail,Long> {
     @Query(value = "select * from order_detail where start_time like ?1",nativeQuery = true)
-    List<OrderDetail> findByDate(String date);
+    Iterable<OrderDetail> findByDate(String date);
+    @Query(value = "select * from order_detail where own_user_id = ?1",nativeQuery = true)
+    List<OrderDetail> History(Long id);
 }
