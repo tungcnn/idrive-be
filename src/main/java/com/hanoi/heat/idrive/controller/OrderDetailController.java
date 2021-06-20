@@ -1,5 +1,7 @@
 package com.hanoi.heat.idrive.controller;
 
+import com.hanoi.heat.idrive.model.OrderDetail;
+import com.hanoi.heat.idrive.model.OrderDetail;
 import com.hanoi.heat.idrive.service.OrderDetail.IOrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +24,13 @@ public class OrderDetailController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> History(@PathVariable Long id){
-        return new ResponseEntity<>(detailService.History(id),HttpStatus.OK);
+    public ResponseEntity<?> History(@PathVariable Long id) {
+        return new ResponseEntity<>(detailService.History(id), HttpStatus.OK);
+    }
+    private IOrderDetailService orderDetailService;
+
+    @PostMapping
+    public ResponseEntity<OrderDetail> save(@RequestBody OrderDetail orderDetail) {
+        return new ResponseEntity<>(orderDetailService.save(orderDetail), HttpStatus.OK);
     }
 }
