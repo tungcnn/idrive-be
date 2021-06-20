@@ -1,5 +1,6 @@
 package com.hanoi.heat.idrive.controller;
 
+import com.hanoi.heat.idrive.model.User;
 import com.hanoi.heat.idrive.model.Location;
 import com.hanoi.heat.idrive.model.Vehicle;
 import com.hanoi.heat.idrive.model.VehicleType;
@@ -82,6 +83,11 @@ public class VehicleController {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(vehicles, HttpStatus.OK);
+    }
+
+    @GetMapping("/owner/{id}/{pageNo}")
+    public ResponseEntity<Iterable<Vehicle>> getAllByUser(@PathVariable("id") Long id, @PathVariable("pageNo") int pageNo) {
+        return new ResponseEntity<>(vehicleService.findAllByOwner(id, pageNo), HttpStatus.OK);
     }
 
     @PostMapping

@@ -1,5 +1,6 @@
 package com.hanoi.heat.idrive.service.vehicle;
 
+import com.hanoi.heat.idrive.model.User;
 import com.hanoi.heat.idrive.model.Location;
 import com.hanoi.heat.idrive.model.Vehicle;
 import com.hanoi.heat.idrive.model.VehicleType;
@@ -39,6 +40,12 @@ public class VehicleServiceImpl implements VehicleService{
     @Override
     public void delete(Long id) {
         vehicleRepo.deleteById(id);
+    }
+
+    @Override
+    public Iterable<Vehicle> findAllByOwner(Long id, int pageNo) {
+        int offset = (pageNo-1)*10;
+        return vehicleRepo.findAllVehicleByOwner(id, offset);
     }
 
 

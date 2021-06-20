@@ -34,4 +34,6 @@ public class Vehicle {
     private String description;
 
     private String license;
+
+    private String cover;
 }
